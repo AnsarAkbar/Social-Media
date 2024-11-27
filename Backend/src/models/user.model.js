@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema(
             trim: true,
             lowercase: true,
         },
-        fullname: {
+        fullName: {
             type: String,
             required: true,
             trim: true,
@@ -63,6 +63,26 @@ userSchema.pre('save', function (next) {
 
 userSchema.methods.isPasswordCorrect = async function (password) {
     return await bcrypt.compare(password, this.password)
+}
+
+userSchema.methods.genrateAccessToken=function(){
+    return jwt.sign(
+        {
+            _id:this._id,
+            userName:this.useName,
+            fullName:this.fullName,
+            email:this.email,
+        },
+        process.env.ACCESS_TOKEN_SECRET,
+        process.env.ACCESS_TOKEN_EXPIRE
+    )
+}
+userSchema.methods.genrateRefreshToken=function(){
+    jwt.sign(
+        {_id:this._id},
+        process.env.REFRESH_TOKEN_SECRET,
+        process.env.REFRESH_TOKEN_EXPIRE
+    )
 }
 
 
