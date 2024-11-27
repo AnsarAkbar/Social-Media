@@ -45,6 +45,11 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+package.json
+
+package.json
+package-lock.json
+
 
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
@@ -142,3 +147,16 @@ dist
 .svelte-kit
 
 # End of https://www.toptal.com/developers/gitignore/api/node
+
+# Ignore node_modules
+node_modules/
+
+# Ignore package.json and package-lock.json if needed
+package.json
+package-lock.json
+
+# Other common ignores:
+*.log
+.env
+.npm
+.DS_Store

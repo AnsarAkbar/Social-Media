@@ -13,7 +13,6 @@ export const uploadOnCloudinary = async (localImagePath) => {
     if (!localImagePath) return null;
     // Upload an image
     const response = await cloudinary.uploader.upload(localImagePath, {
-      public_id: "shoes",
       resource_type: "auto",
     });
     console.log("image successfullfuly uploaded", response);
